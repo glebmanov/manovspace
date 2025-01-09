@@ -4,7 +4,7 @@ services:
     networks:
       - manovspace-network
     build:
-      context: services/app
+      context: .
       dockerfile: Dockerfile
     env_file: .env
     command: mix phx.server
