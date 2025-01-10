@@ -10,9 +10,11 @@ services:
     command: mix phx.server
     environment:
       SECRET_KEY_BASE: ${SECRET_KEY_BASE}
-      DEFAULT_TITLE: ${DEFAULT_TITLE}
     ports:
       - "${MANOVSPACE_PORT}:${MANOVSPACE_PORT}"
+      - "${TRACKER_PORT}:${TRACKER_PORT}"
+    depends_on:
+      - db_tracker
 
   server:
     container_name: nginx
@@ -40,7 +42,7 @@ services:
     volumes:
       - .:/docker-entrypoint-initdb.d
     ports:
-      - "${PORT_TRACKER_DB}:${PORT_TRACKER_DB}"
+      - "${TRACKER_PORT_DB}:${TRACKER_PORT_DB}"
 
 networks:
   manovspace-network:

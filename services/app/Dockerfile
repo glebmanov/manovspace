@@ -14,6 +14,7 @@ COPY apps apps
 
 RUN mix deps.get --only prod
 RUN mix deps.compile
+RUN mix assets.deploy
 RUN mix phx.digest
 RUN mix release
 
