@@ -4,7 +4,7 @@ services:
     networks:
       - manovspace-network
     build:
-      context: .
+      context: services/app
       dockerfile: Dockerfile
     env_file: .env
     command: mix phx.server
@@ -20,7 +20,7 @@ services:
       - manovspace-network
     image: nginx:1.18.0
     volumes:
-      - /root/confs/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - /root/manovspace/services/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - /etc/letsencrypt/archive/manov.space:/etc/nginx/certs/manov.space:ro
       - /etc/letsencrypt/archive/tracker.manov.space:/etc/nginx/certs/tracker.manov.space:ro
     ports:
@@ -32,6 +32,7 @@ services:
     networks:
       - manovspace-network
     image: postgres:12-alpine
+    env_file: .env
     environment:
       POSTGRES_DB: ${TRACKER_DB}
       POSTGRES_USER: ${USER_TRACKER_DB}
