@@ -87,8 +87,6 @@ defmodule ManovspaceWeb do
 
       # HTML escaping functionality
       import Phoenix.HTML
-      # Core UI components
-      import ManovspaceWeb.CoreComponents
 
       # Shortcut for generating JS commands
       alias Phoenix.LiveView.JS

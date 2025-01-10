@@ -15,8 +15,7 @@ config :manovspace, ManovspaceWeb.Endpoint,
   debug_errors: true,
   secret_key_base: "ZJqNgFS2v99uaWYRHzPXnjiK0htns0dzmvqD5/yv3dC2lkbDE81TuPGfOpnesggp",
   watchers: [
-    esbuild: {Esbuild, :install_and_run, [:manovspace, ~w(--sourcemap=inline --watch)]},
-    tailwind: {Tailwind, :install_and_run, [:manovspace, ~w(--watch)]}
+    esbuild: {Esbuild, :install_and_run, [:manovspace, ~w(--sourcemap=inline --watch)]}
   ]
 
 # ## SSL Support
