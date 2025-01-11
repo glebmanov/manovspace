@@ -1,0 +1,30 @@
+{
+    "scripts": {
+        "build": "cross-env NODE_ENV=production webpack --config webpack.config.js",
+        "dev": "cross-env NODE_ENV=development webpack --config webpack.config.js"
+    },
+    "private": true,
+    "dependencies": {
+        "@reduxjs/toolkit": "^2.5.0",
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0",
+        "react-redux": "^9.2.0",
+        "react-router-dom": "^7.1.1",
+        "redux": "^5.0.1"
+    },
+    "devDependencies": {
+        "@types/react": "^19.0.4",
+        "@types/react-dom": "^19.0.2",
+        "babel-loader": "^9.2.1",
+        "cross-env": "^7.0.3",
+        "css-loader": "^7.1.2",
+        "sass": "^1.83.1",
+        "sass-loader": "^16.0.4",
+        "style-loader": "^4.0.0",
+        "ts-loader": "^9.5.1",
+        "typescript": "^5.7.3",
+        "webpack": "^5.97.1",
+        "webpack-cli": "^6.0.1",
+        "webpack-dev-server": "^5.2.0"
+    }
+}

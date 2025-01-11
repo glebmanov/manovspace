@@ -1,0 +1,30 @@
+{
+  "include": ["src/**/*.ts", "src/index.tsx"],
+  "exclude": ["node_modules"],
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@assets/*": ["/assets"],
+      "@client/*": ["/client"],
+      "@hooks/*": ["/hooks"],
+      "@store/*": ["/store"],
+      "@types/*": ["/types"],
+    },
+    "target": "ES5",
+    "module": "ESNext",
+    "lib": ["ESNext", "DOM"],
+    "jsx": "react",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "alwaysStrict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true,
+    "strictFunctionTypes": true,
+    "noImplicitThis": true,
+    "strictBindCallApply": true,
+    "forceConsistentCasingInFileNames": true
+  }
+}

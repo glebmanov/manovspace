@@ -1,5 +1,20 @@
 import Config
 
+config :tracker,
+  ecto_repos: [Tracker.Repo],
+  generators: [timestamp_type: :utc_datetime]
+
+# Configures the endpoint
+config :tracker, TrackerWeb.Endpoint,
+  url: [host: "localhost"],
+  adapter: Bandit.PhoenixAdapter,
+  render_errors: [
+    formats: [html: TrackerWeb.ErrorHTML, json: TrackerWeb.ErrorJSON],
+    layout: false
+  ],
+  pubsub_server: Tracker.PubSub,
+  live_view: [signing_salt: "4e8mV0IY"]
+
 config :manovspace,
   generators: [timestamp_type: :utc_datetime]
 
