@@ -1,4 +1,5 @@
 const path = require('path');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const { NODE_ENV } = process.env || 'production';
 
@@ -30,6 +31,15 @@ module.exports = {
     warnings: false,
   },
 
+  plugins: [
+    new CleanWebpackPlugin({
+      cleanAfterEveryBuildPatterns: [path.join(__dirname, '../priv/static/assets/**/*.LICENSE.txt')],
+      dry: false,
+      verbose: false,
+      dangerouslyAllowCleanPatternsOutsideProject: true,
+    }),
+  ],
+
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
     alias: {
@@ -55,11 +65,7 @@ module.exports = {
       },
       {
         test: /\.scss$/i,
-        use: [
-          { loader: 'style-loader' },
-          { loader: 'css-loader' },
-          { loader: 'sass-loader' },
-        ],
+        use: [{ loader: 'style-loader' }, { loader: 'css-loader' }, { loader: 'sass-loader' }],
       },
     ],
   },
