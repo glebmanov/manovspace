@@ -1,5 +1,5 @@
 import React, { FC, lazy, Suspense } from 'react';
-import { Route, Routes, Navigate } from 'react-router-dom';
+import { Route, Routes, Navigate, BrowserRouter } from 'react-router-dom';
 import { MainLayout } from './layouts';
 
 export const App: FC = () => {
@@ -11,16 +11,18 @@ export const App: FC = () => {
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <Routes>
-        <Route path="/" element={<MainLayout />}>
-          <Route index element={<Navigate replace to="dashboard" />} />
-          <Route path="dashboard" element={<Dashboard />} />
-          <Route path="overview" element={<Overview />} />
-          <Route path="profile" element={<Profile />} />
-          <Route path="settings" element={<Settings />} />
-          <Route path="*" element={<NoPage />} />
-        </Route>
-      </Routes>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<MainLayout />}>
+            <Route index element={<Navigate replace to="dashboard" />} />
+            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="overview" element={<Overview />} />
+            <Route path="profile" element={<Profile />} />
+            <Route path="settings" element={<Settings />} />
+            <Route path="*" element={<NoPage />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </Suspense>
   );
 };
