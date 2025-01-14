@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-export const useStopWatch = (onStartCallback?: () => void, onStopCallback?: () => void) => {
+export const useStopWatch = (onStartCallback?: () => void, onStopCallback?: (period: number) => void) => {
   const [isLaunched, setIsLaunched] = useState(false);
   const [period, setPeriod] = useState(0);
   const intervalId = useRef<NodeJS.Timeout>(null);
@@ -26,7 +26,7 @@ export const useStopWatch = (onStartCallback?: () => void, onStopCallback?: () =
   const onStop = () => {
     setIsLaunched(false);
 
-    onStopCallback && onStopCallback();
+    onStopCallback && onStopCallback(period);
   };
 
   return { isLaunched, period, onToggle: isLaunched ? onStop : onStart };

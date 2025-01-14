@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from 'store';
-import { ITarget, ITask } from 'types/taskInterfaces';
+import { ITarget, ITask, ITaskDuration } from 'types/taskInterfaces';
 
 export type TasksState = {
   tasks: { [id: string]: ITask };
@@ -15,10 +15,16 @@ const initialState: TasksState = {
 export const tasksSlice = createSlice({
   name: 'tasks',
   initialState,
-  reducers: {},
+  reducers: {
+    setTaskDuration(state, action: PayloadAction<{ id: string; duration: ITaskDuration }>) {
+      const { id, duration } = action.payload;
+
+      state.tasks[id].duration = duration;
+    },
+  },
 });
 
-export const {} = tasksSlice.actions;
+export const { setTaskDuration } = tasksSlice.actions;
 
 export const selectAllTasks = (state: RootState) => state.tasks.tasks;
 

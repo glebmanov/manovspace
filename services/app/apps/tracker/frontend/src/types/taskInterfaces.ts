@@ -3,12 +3,14 @@ export interface ITask {
   name: string;
   icon: string;
   description: string;
-  timer: {
-    start: number;
-    end: number;
-    last: number;
-    total: number;
-  };
+  duration: ITaskDuration;
+}
+
+export interface ITaskDuration {
+  start: Date;
+  end: Date;
+  last: number;
+  total: number;
 }
 
 export interface ITarget {
