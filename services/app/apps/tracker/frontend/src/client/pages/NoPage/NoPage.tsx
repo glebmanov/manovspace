@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
 
 export const NoPage: FC = () => {
-  return <div>NoPage</div>;
+  return <div className="page no-page">NoPage</div>;
 };

@@ -25,6 +25,7 @@ export const useStopWatch = (onStartCallback?: () => void, onStopCallback?: (per
 
   const onStop = () => {
     setIsLaunched(false);
+    setPeriod(0);
 
     onStopCallback && onStopCallback(period);
   };

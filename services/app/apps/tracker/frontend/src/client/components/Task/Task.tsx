@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import './index.scss';
 import clsx from 'clsx';
 import { ITask } from 'types/taskInterfaces';
 import { useTask } from './hooks/useTask';
@@ -12,9 +13,9 @@ export const Task: FC<Props> = ({ task }) => {
 
   return (
     <div className={clsx('task', isLaunched && 'launched')} onClick={onClick}>
-      <span>{task.icon}</span>
-      <span>{task.name}</span>
-      <span>{period}</span>
+      <div className="icon">{task.icon}</div>
+      <div className="name">{task.name}</div>
+      <div className="period">{period}</div>
     </div>
   );
 };

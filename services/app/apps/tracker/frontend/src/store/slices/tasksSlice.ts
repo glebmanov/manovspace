@@ -8,7 +8,20 @@ export type TasksState = {
 };
 
 const initialState: TasksState = {
-  tasks: {},
+  tasks: {
+    '1': {
+      id: '1',
+      name: 'name',
+      icon: 'icon',
+      description: 'description',
+      duration: {
+        start: new Date(),
+        end: new Date(),
+        last: 0,
+        total: 0,
+      },
+    },
+  },
   targets: {},
 };
 

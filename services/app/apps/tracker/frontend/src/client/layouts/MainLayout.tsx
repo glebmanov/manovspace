@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import './index.scss';
-import Dashboard from '../../assets/icons/stats.svg';
-import Overview from '../../assets/icons/clock.svg';
-import Profile from '../../assets/icons/user.svg';
-import Settings from '../../assets/icons/settings.svg';
+import Dashboard from 'assets/icons/dashboard.svg';
+import Overview from 'assets/icons/stats.svg';
+import Profile from 'assets/icons/user.svg';
+import Settings from 'assets/icons/settings.svg';
 
 export const MainLayout: FC = () => {
   return (
@@ -14,30 +14,30 @@ export const MainLayout: FC = () => {
       </main>
 
       <nav>
-        <NavLink to="dashboard">
+        <NavLink to="dashboard" className={({ isActive }) => (isActive ? 'active' : '')}>
           <div>
-            <Dashboard fill={'#9cbfba'} />
+            <Dashboard />
             <span>Dashboard</span>
           </div>
         </NavLink>
 
-        <NavLink to="overview">
+        <NavLink to="overview" className={({ isActive }) => (isActive ? 'active' : '')}>
           <div>
-            <Overview fill={'#9cbfba'} />
+            <Overview />
             <span>Overview</span>
           </div>
         </NavLink>
 
-        <NavLink to="profile">
+        <NavLink to="profile" className={({ isActive }) => (isActive ? 'active' : '')}>
           <div>
-            <Profile fill={'#9cbfba'} />
+            <Profile />
             <span>Profile</span>
           </div>
         </NavLink>
 
-        <NavLink to="settings">
+        <NavLink to="settings" className={({ isActive }) => (isActive ? 'active' : '')}>
           <div>
-            <Settings fill={'#9cbfba'} />
+            <Settings />
             <span>Settings</span>
           </div>
         </NavLink>
