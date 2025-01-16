@@ -1,13 +1,16 @@
 import React, { FC } from 'react';
 import './index.scss';
-import AddTracker from 'assets/icons/add.svg';
 import { useDashboard } from './hooks/useDashboard';
 import { Date } from 'client/utils/date';
-import { Target } from 'client/components/Target';
-import { Task } from 'client/components/Task';
+import { Portal, usePortal } from 'client/components/Portal';
+import { AddTask } from 'client/containers/AddTask';
+import { AddButton } from './components/AddButton';
+import { Targets } from './components/Targets';
+import { Tasks } from './components/Tasks';
 
 export const Dashboard: FC = () => {
   const { today, targets, tasks } = useDashboard();
+  const { isOpen, onOpen, onClose } = usePortal();
 
   return (
     <div className="page dashboard">
@@ -17,26 +20,16 @@ export const Dashboard: FC = () => {
           <h3>{Date.format(today)}</h3>
         </div>
 
-        <button>
-          <AddTracker />
-        </button>
+        <AddButton onOpen={onOpen} />
       </div>
 
-      <div className="targets">
-        <div className="title">Targets</div>
+      <Targets targets={targets} />
 
-        {targets.map(target => (
-          <Target target={target} />
-        ))}
-      </div>
+      <Tasks tasks={tasks} />
 
-      <div className="tasks">
-        <div className="title">Tasks</div>
-
-        {tasks.map(task => (
-          <Task task={task} />
-        ))}
-      </div>
+      <Portal isOpen={isOpen} onClose={onClose}>
+        <AddTask />
+      </Portal>
     </div>
   );
 };

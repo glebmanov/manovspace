@@ -1,4 +1,10 @@
 .dashboard {
+  .header {
+    .add-button {
+      all: unset;
+    }
+  }
+
   .title {
     margin: 0 0 8px 16px;
     color: #5c8c87;
