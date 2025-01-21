@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 
-export const useStopWatch = (onStartCallback?: () => void, onStopCallback?: (period: number) => void) => {
+export const useStopWatch = (onStartCallback?: () => void, onStopCallback?: (elapsed: number) => void) => {
   const [isLaunched, setIsLaunched] = useState(false);
-  const [period, setPeriod] = useState(0);
+  const [elapsed, setElapsed] = useState(0);
   const intervalId = useRef<NodeJS.Timeout>(null);
 
   useEffect(() => {
     if (isLaunched) {
-      intervalId.current = setInterval(() => setPeriod(period => period + 1), 1000);
+      intervalId.current = setInterval(() => setElapsed(elapsed => elapsed + 1), 1000);
     } else {
       intervalId.current && clearInterval(intervalId.current);
     }
@@ -15,7 +15,7 @@ export const useStopWatch = (onStartCallback?: () => void, onStopCallback?: (per
     return () => {
       intervalId.current && clearInterval(intervalId.current);
     };
-  }, [isLaunched, period]);
+  }, [isLaunched, elapsed]);
 
   const onStart = () => {
     setIsLaunched(true);
@@ -25,10 +25,10 @@ export const useStopWatch = (onStartCallback?: () => void, onStopCallback?: (per
 
   const onStop = () => {
     setIsLaunched(false);
-    setPeriod(0);
+    setElapsed(0);
 
-    onStopCallback && onStopCallback(period);
+    onStopCallback && onStopCallback(elapsed);
   };
 
-  return { isLaunched, period, onToggle: isLaunched ? onStop : onStart };
+  return { isLaunched, elapsed, onToggle: isLaunched ? onStop : onStart };
 };

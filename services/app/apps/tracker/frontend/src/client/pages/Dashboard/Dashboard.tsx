@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import './index.scss';
 import { useDashboard } from './hooks/useDashboard';
-import { Date } from 'client/utils/date';
+import { formattedDate } from 'client/utils/date';
 import { Portal, usePortal } from 'client/components/Portal';
 import { AddTask } from 'client/containers/AddTask';
 import { AddButton } from './components/AddButton';
@@ -17,7 +17,7 @@ export const Dashboard: FC = () => {
       <div className="header">
         <div>
           <h2>Dashboard</h2>
-          <h3>{Date.format(today)}</h3>
+          <h3>{formattedDate.format(today)}</h3>
         </div>
 
         <AddButton onOpen={onOpen} />

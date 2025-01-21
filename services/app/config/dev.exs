@@ -4,7 +4,7 @@ import Config
 config :tracker, Tracker.Repo,
   username: "user",
   password: System.get_env("PASSWORD_TRACKER_DB"),
-  hostname: "localhost",
+  hostname: "db_tracker",
   database: "tracker_repo",
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
@@ -18,7 +18,9 @@ config :tracker, TrackerWeb.Endpoint,
   code_reloader: true,
   debug_errors: true,
   secret_key_base: "cs44tKsnKLyRw1tRbUQeR37rTMz4h0aT2CRrBGN1QvE2qupVelcjjEFdxU8wLinc",
-  watchers: []
+  watchers: [
+    npm: ["run", "dev", cd: Path.expand("../apps/tracker/frontend", __DIR__)]
+  ]
 
 # Watch static and templates for browser reloading.
 config :tracker, TrackerWeb.Endpoint,
@@ -36,7 +38,7 @@ config :tracker, dev_routes: true
 config :manovspace, ManovspaceWeb.Endpoint,
   # Binding to loopback ipv4 address prevents access from other machines.
   # Change to `ip: {0, 0, 0, 0}` to allow access from other machines.
-  http: [ip: {127, 0, 0, 1}, port: 4000],
+  http: [ip: {0, 0, 0, 0}, port: 4000],
   check_origin: false,
   code_reloader: true,
   debug_errors: true,

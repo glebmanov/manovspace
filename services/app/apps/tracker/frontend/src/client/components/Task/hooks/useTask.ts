@@ -16,20 +16,20 @@ export const useTask = ({ id, duration }: ITask) => {
     );
   };
 
-  const onStop = (period: number) => {
+  const onStop = (elapsed: number) => {
     dispatch(
       setTaskDuration({
         id,
-        duration: { start, end: new Date(), last: period, total: total + period },
+        duration: { start, end: new Date(), last: elapsed, total: total + elapsed },
       }),
     );
   };
 
-  const { isLaunched, period, onToggle } = useStopWatch(onStart, onStop);
+  const { isLaunched, elapsed, onToggle } = useStopWatch(onStart, onStop);
 
   const onClick = () => {
     onToggle();
   };
 
-  return { isLaunched, period, onClick };
+  return { isLaunched, elapsed, last, total, onClick };
 };

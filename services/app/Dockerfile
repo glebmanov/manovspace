@@ -1,5 +1,4 @@
 FROM elixir:1.17.3-alpine
-ENV MIX_ENV=prod
 
 WORKDIR /app
 

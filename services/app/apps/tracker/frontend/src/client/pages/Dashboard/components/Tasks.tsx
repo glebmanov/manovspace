@@ -12,7 +12,7 @@ export const Tasks: FC<IProps> = ({ tasks }) => {
       <div className="title">Tasks</div>
 
       {tasks.map(task => (
-        <Task task={task} />
+        <Task task={task} key={task.id} />
       ))}
     </div>
   );

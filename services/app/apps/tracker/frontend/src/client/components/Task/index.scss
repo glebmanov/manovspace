@@ -17,7 +17,23 @@
     margin: 0 8px 0 0;
   }
 
-  .period {
+  .elapsed {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
     margin: 0 0 0 auto;
+
+    .current,
+    .total,
+    .last {
+      display: inline-block;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .last {
+      font-size: 12px;
+      font-weight: 400;
+    }
   }
 }

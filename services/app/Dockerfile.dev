@@ -1,0 +1,24 @@
+FROM elixir:1.17.3-alpine
+
+WORKDIR /app
+
+RUN apk update && apk add --no-cache \
+  build-base \
+  git \
+  nodejs \
+  npm \
+  inotify-tools
+
+RUN mix local.hex --force \
+  && mix local.rebar --force
+
+COPY mix.exs mix.lock ./
+COPY config config
+COPY apps apps
+
+RUN mix deps.get
+RUN mix deps.compile
+RUN MIX_TARGET=tracker mix webbuild dev
+RUN mix assets.deploy
+
+CMD ["mix", "phx.server"]

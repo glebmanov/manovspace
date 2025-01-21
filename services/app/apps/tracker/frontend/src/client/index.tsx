@@ -11,7 +11,7 @@ export const App: FC = () => {
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <BrowserRouter>
+      <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
         <Routes>
           <Route path="/" element={<MainLayout />}>
             <Route index element={<Navigate replace to="dashboard" />} />
