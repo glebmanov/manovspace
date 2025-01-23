@@ -10,10 +10,11 @@ services:
     command: mix phx.server
     environment:
       MIX_ENV: dev
-      FILESYSTEM_FSINOTIFY_EXECUTABLE_FILE: /usr/bin/inotifywait
     ports:
       - "${MANOVSPACE_PORT}:${MANOVSPACE_PORT}"
       - "${TRACKER_PORT}:${TRACKER_PORT}"
+    volumes:
+      - ./services/app:/app:delegated
     depends_on:
       - db_tracker
 
