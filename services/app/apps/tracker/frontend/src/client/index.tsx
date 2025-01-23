@@ -1,16 +1,23 @@
-import React, { FC, lazy, Suspense } from 'react';
+import React, { FC, useMemo } from 'react';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
 import { Route, Routes, Navigate, BrowserRouter } from 'react-router-dom';
+import { useAppSelector } from 'hooks';
+import { selectTheme } from 'store/slices/appSlice';
 import { MainLayout } from './layouts';
+import Dashboard from './pages/Dashboard';
+import Overview from './pages/Overview';
+import Profile from './pages/Profile';
+import Settings from './pages/Settings';
+import NoPage from './pages/NoPage';
 
 export const App: FC = () => {
-  const Dashboard = lazy(() => import('./pages/Dashboard'));
-  const Overview = lazy(() => import('./pages/Overview'));
-  const Profile = lazy(() => import('./pages/Profile'));
-  const Settings = lazy(() => import('./pages/Settings'));
-  const NoPage = lazy(() => import('./pages/NoPage'));
+  const mode = useAppSelector(selectTheme);
+  const theme = useMemo(() => createTheme({ palette: { mode } }), [mode]);
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <ThemeProvider theme={theme} disableTransitionOnChange>
+      <CssBaseline />
       <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
         <Routes>
           <Route path="/" element={<MainLayout />}>
@@ -23,6 +30,6 @@ export const App: FC = () => {
           </Route>
         </Routes>
       </BrowserRouter>
-    </Suspense>
+    </ThemeProvider>
   );
 };

@@ -11,7 +11,7 @@ export type AppState = {
 };
 
 const initialState: AppState = {
-  theme: Themes.Dark,
+  theme: Themes.Light,
 };
 
 export const appSlice = createSlice({

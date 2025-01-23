@@ -2,7 +2,11 @@ import React, { FC } from 'react';
 import './index.scss';
 import { useAddTask } from './hooks/useAddTask';
 
-export const AddTask: FC = () => {
+interface Props {
+  onClose: () => void;
+}
+
+export const AddTask: FC<Props> = ({ onClose }) => {
   const { name, onChangeName, description, onChangeDescription } = useAddTask();
 
   return (
@@ -22,6 +26,8 @@ export const AddTask: FC = () => {
 
         <input type="text" value={description} onChange={onChangeDescription} />
       </div>
+
+      <button onClick={onClose}>Cancel</button>
     </div>
   );
 };

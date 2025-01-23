@@ -5,14 +5,18 @@ import './index.scss';
 interface Props {
   children: JSX.Element;
   isOpen: boolean;
-  onClose: () => void;
 }
 
-export const Portal: FC<Props> = memo(({ children, isOpen, onClose }) => {
+export const Portal: FC<Props> = memo(({ children, isOpen }) => {
   return (
     <>
       {isOpen &&
-        createPortal(<div className="portal-wrapper">{React.cloneElement(children, { onClose })}</div>, document.body)}
+        createPortal(
+          <div className="portal-wrapper">
+            <div className="portal">{children}</div>
+          </div>,
+          document.body,
+        )}
     </>
   );
 });

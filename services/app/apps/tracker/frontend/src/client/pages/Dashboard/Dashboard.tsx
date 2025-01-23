@@ -7,29 +7,35 @@ import { AddTask } from 'client/containers/AddTask';
 import { AddButton } from './components/AddButton';
 import { Targets } from './components/Targets';
 import { Tasks } from './components/Tasks';
+import { Box, Typography } from '@mui/material';
 
 export const Dashboard: FC = () => {
   const { today, targets, tasks } = useDashboard();
   const { isOpen, onOpen, onClose } = usePortal();
 
   return (
-    <div className="page dashboard">
-      <div className="header">
-        <div>
-          <h2>Dashboard</h2>
-          <h3>{formattedDate.format(today)}</h3>
-        </div>
+    <Box className="page dashboard">
+      <Box className="header">
+        <Box>
+          <Typography component="h2" variant="h5">
+            Dashboard
+          </Typography>
+
+          <Typography component="h3" variant="h6">
+            {formattedDate.format(today)}
+          </Typography>
+        </Box>
 
         <AddButton onOpen={onOpen} />
-      </div>
+      </Box>
 
       <Targets targets={targets} />
 
       <Tasks tasks={tasks} />
 
-      <Portal isOpen={isOpen} onClose={onClose}>
-        <AddTask />
+      <Portal isOpen={isOpen}>
+        <AddTask onClose={onClose} />
       </Portal>
-    </div>
+    </Box>
   );
 };

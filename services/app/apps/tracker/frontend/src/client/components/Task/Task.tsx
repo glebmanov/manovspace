@@ -4,6 +4,7 @@ import clsx from 'clsx';
 import { ITask } from 'types/taskInterfaces';
 import { useTask } from './hooks/useTask';
 import { toTimeString } from 'client/utils/date';
+import { Box, Card, Typography } from '@mui/material';
 
 interface Props {
   task: ITask;
@@ -13,22 +14,30 @@ export const Task: FC<Props> = ({ task }) => {
   const { isLaunched, elapsed, last, total, onClick } = useTask(task);
 
   return (
-    <div className={clsx('task', isLaunched && 'launched')} onClick={onClick}>
-      <div className="icon">{task.icon}</div>
-      <div className="name">{task.name}</div>
-      <div className="elapsed">
+    <Card variant="outlined" className={clsx('task', isLaunched && 'launched')} onClick={onClick}>
+      <Typography className="icon">{task.icon}</Typography>
+
+      <Typography className="name">{task.name}</Typography>
+
+      <Box className="elapsed">
         {isLaunched ? (
           <>
-            <span className="current">{toTimeString(elapsed)}</span>
+            <Typography component={'span'} className="current">
+              {toTimeString(elapsed)}
+            </Typography>
           </>
         ) : (
           <>
-            <span className="total">{toTimeString(total)}</span>
+            <Typography component={'span'} className="total">
+              {toTimeString(total)}
+            </Typography>
 
-            <span className="last">{toTimeString(last)}</span>
+            <Typography component={'span'} className="last">
+              {toTimeString(last)}
+            </Typography>
           </>
         )}
-      </div>
-    </div>
+      </Box>
+    </Card>
   );
 };

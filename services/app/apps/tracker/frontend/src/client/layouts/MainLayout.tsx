@@ -5,6 +5,7 @@ import Dashboard from 'assets/icons/dashboard.svg';
 import Overview from 'assets/icons/stats.svg';
 import Profile from 'assets/icons/user.svg';
 import Settings from 'assets/icons/settings.svg';
+import { NavButton } from 'client/components/NavButton';
 
 export const MainLayout: FC = () => {
   return (
@@ -14,32 +15,32 @@ export const MainLayout: FC = () => {
       </main>
 
       <nav>
-        <NavLink to="dashboard" className={({ isActive }) => (isActive ? 'active' : '')}>
-          <div>
+        <NavLink to="dashboard">
+          <NavButton>
             <Dashboard />
-            <span>Dashboard</span>
-          </div>
+            Dashboard
+          </NavButton>
         </NavLink>
 
-        <NavLink to="overview" className={({ isActive }) => (isActive ? 'active' : '')}>
-          <div>
+        <NavLink to="overview">
+          <NavButton>
             <Overview />
-            <span>Overview</span>
-          </div>
+            Overview
+          </NavButton>
         </NavLink>
 
-        <NavLink to="profile" className={({ isActive }) => (isActive ? 'active' : '')}>
-          <div>
+        <NavLink to="profile">
+          <NavButton>
             <Profile />
-            <span>Profile</span>
-          </div>
+            Profile
+          </NavButton>
         </NavLink>
 
-        <NavLink to="settings" className={({ isActive }) => (isActive ? 'active' : '')}>
-          <div>
+        <NavLink to="settings">
+          <NavButton>
             <Settings />
-            <span>Settings</span>
-          </div>
+            Settings
+          </NavButton>
         </NavLink>
       </nav>
     </div>

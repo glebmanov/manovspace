@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { Target } from 'client/components/Target';
 import { ITarget } from 'types/taskInterfaces';
+import { Box, Typography } from '@mui/material';
 
 interface IProps {
   targets: Array<ITarget>;
@@ -8,12 +9,12 @@ interface IProps {
 
 export const Targets: FC<IProps> = ({ targets }) => {
   return (
-    <div className="targets">
-      <div className="title">Targets</div>
+    <Box className="targets">
+      <Typography component={'h6'}>Targets</Typography>
 
       {targets.map(target => (
         <Target target={target} />
       ))}
-    </div>
+    </Box>
   );
 };

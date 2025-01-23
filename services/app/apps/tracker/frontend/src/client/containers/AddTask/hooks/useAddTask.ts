@@ -12,5 +12,7 @@ export const useAddTask = () => {
     setDescription(e.target.value);
   };
 
+  const onAddTask = () => {};
+
   return { name, onChangeName, description, onChangeDescription };
 };
