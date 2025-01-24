@@ -7,7 +7,7 @@ interface Props {
 }
 
 export const AddTask: FC<Props> = ({ onClose }) => {
-  const { name, onChangeName, description, onChangeDescription } = useAddTask();
+  const { name, onChangeName, description, onChangeDescription, onCreate } = useAddTask();
 
   return (
     <div className="add-task">
@@ -26,6 +26,8 @@ export const AddTask: FC<Props> = ({ onClose }) => {
 
         <input type="text" value={description} onChange={onChangeDescription} />
       </div>
+
+      <button onClick={onCreate}>Create</button>
 
       <button onClick={onClose}>Cancel</button>
     </div>

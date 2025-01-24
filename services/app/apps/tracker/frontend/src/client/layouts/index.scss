@@ -35,5 +35,9 @@ $max-width: 430px;
     justify-content: space-between;
 
     padding: 0 8px;
+
+    a {
+      all: unset;
+    }
   }
 }

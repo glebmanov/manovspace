@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import Add from 'assets/icons/add.svg';
+import { IconButton } from '@mui/material';
 
 interface IProps {
   onOpen: () => void;
@@ -7,8 +8,8 @@ interface IProps {
 
 export const AddButton: FC<IProps> = ({ onOpen }) => {
   return (
-    <button type="button" className="add-button" onClick={onOpen}>
+    <IconButton className="add-button" aria-label="add" onClick={onOpen}>
       <Add />
-    </button>
+    </IconButton>
   );
 };

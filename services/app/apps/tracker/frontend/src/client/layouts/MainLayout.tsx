@@ -6,15 +6,16 @@ import Overview from 'assets/icons/stats.svg';
 import Profile from 'assets/icons/user.svg';
 import Settings from 'assets/icons/settings.svg';
 import { NavButton } from 'client/components/NavButton';
+import { Box } from '@mui/material';
 
 export const MainLayout: FC = () => {
   return (
-    <div className="main-layout">
-      <main>
+    <Box className="main-layout">
+      <Box component="main">
         <Outlet />
-      </main>
+      </Box>
 
-      <nav>
+      <Box component="nav">
         <NavLink to="dashboard">
           <NavButton>
             <Dashboard />
@@ -42,7 +43,7 @@ export const MainLayout: FC = () => {
             Settings
           </NavButton>
         </NavLink>
-      </nav>
-    </div>
+      </Box>
+    </Box>
   );
 };
